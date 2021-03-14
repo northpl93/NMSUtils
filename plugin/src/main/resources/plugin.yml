@@ -1,0 +1,5 @@
+name: NMSUtils
+main: pl.north93.nmsutils.NMSUtilsPlugin
+version: "1.0"
+author: northpl93
+api-version: "1.13"

@@ -1,0 +1,27 @@
+plugins {
+    id 'maven-publish'
+    id 'io.freefair.lombok' version '5.3.0'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
+}
+
+subprojects {
+    apply plugin: 'java-library'
+    apply plugin: 'io.freefair.lombok'
+    apply plugin: 'com.github.johnrengelman.shadow'
+
+    repositories {
+        mavenLocal()
+
+        mavenCentral()
+
+        maven {
+            url 'https://papermc.io/repo/repository/maven-public'
+        }
+
+        maven {
+            // needed for bungeecord chat api
+            url 'https://oss.sonatype.org/content/repositories/snapshots'
+        }
+    }
+}
+

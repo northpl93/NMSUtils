@@ -1,0 +1,21 @@
+group 'pl.north93.nmsutils'
+version '1.0-SNAPSHOT'
+
+dependencies {
+    shadow 'com.destroystokyo.paper:paper-api:1.12.2-R0.1-SNAPSHOT'
+
+    // we need Netty in classpath to compile stuff like ChannelInitializeEvent
+    shadow 'io.netty:netty-all:4.1.60.Final'
+}
+
+publishing {
+    publications {
+        api(MavenPublication) {
+            groupId = 'pl.north93.nmsutils'
+            artifactId = 'api'
+            version = '1.0-SNAPSHOT'
+
+            from components.java
+        }
+    }
+}

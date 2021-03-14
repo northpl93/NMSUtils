@@ -1,0 +1,6 @@
+rootProject.name = 'NMSUtils'
+
+include ":api"
+include ":impl"
+include ":v1_12R1"
+include ":plugin"
