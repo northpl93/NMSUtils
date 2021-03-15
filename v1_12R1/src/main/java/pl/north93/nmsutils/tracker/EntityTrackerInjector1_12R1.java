@@ -12,7 +12,7 @@ import org.bukkit.craftbukkit.v1_12_R1.entity.CraftEntity;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-class EntityTrackerInjector1_12_R1 implements IEntityTrackerInjector
+class EntityTrackerInjector1_12R1 implements IEntityTrackerInjector
 {
     private static final Field TRACKER_FIELD;
 
@@ -39,7 +39,7 @@ class EntityTrackerInjector1_12_R1 implements IEntityTrackerInjector
             final EntityTrackerEntry entityTrackerEntry = (EntityTrackerEntry) TRACKER_FIELD.get(craftEntity.getHandle());
             final Map<EntityPlayer, Boolean> trackedPlayerMap = entityTrackerEntry.trackedPlayerMap;
 
-            entityTrackerEntry.trackedPlayerMap = new EntityTrackerMap<>(new EntityTrackerCallback_1_12_R1(entity), trackedPlayerMap);
+            entityTrackerEntry.trackedPlayerMap = new EntityTrackerMap<>(new EntityTrackerCallback1_12R1(entity), trackedPlayerMap);
             entityTrackerEntry.trackedPlayers = entityTrackerEntry.trackedPlayerMap.keySet();
         }
         catch (final Exception e)

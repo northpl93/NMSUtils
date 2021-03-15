@@ -6,15 +6,14 @@ import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-public class ProtocolManagerImpl implements IProtocolManager, IPacketHandler
+class ProtocolManagerImpl implements IProtocolManager, IPacketHandler
 {
     private final List<IPacketHandler> packetHandlers;
 
-    public ProtocolManagerImpl()
+    public ProtocolManagerImpl(final IProtocolInjector injector)
     {
         this.packetHandlers = new ArrayList<>();
 
-        final IProtocolInjector injector = new ProtocolInjector1_12_R1();
         try
         {
             injector.doInject(new InjectorContext(Bukkit.getServer(), injector, this));

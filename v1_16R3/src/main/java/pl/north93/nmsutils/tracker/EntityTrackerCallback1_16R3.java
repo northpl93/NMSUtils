@@ -1,6 +1,6 @@
 package pl.north93.nmsutils.tracker;
 
-import net.minecraft.server.v1_12_R1.EntityPlayer;
+import net.minecraft.server.v1_16_R3.EntityPlayer;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Entity;
@@ -9,11 +9,11 @@ import org.bukkit.entity.Player;
 import pl.north93.nmsutils.tracker.event.EntityTrackedPlayerEvent;
 import pl.north93.nmsutils.tracker.event.EntityUnTrackedPlayerEvent;
 
-class EntityTrackerCallback_1_12_R1 implements IEntityTrackerCallback<EntityPlayer>
+class EntityTrackerCallback1_16R3 implements IEntityTrackerCallback<EntityPlayer>
 {
     private final Entity entity;
 
-    public EntityTrackerCallback_1_12_R1(final Entity entity)
+    public EntityTrackerCallback1_16R3(final Entity entity)
     {
         this.entity = entity;
     }

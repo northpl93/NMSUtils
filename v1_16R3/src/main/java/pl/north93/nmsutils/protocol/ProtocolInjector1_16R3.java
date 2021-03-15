@@ -3,11 +3,11 @@ package pl.north93.nmsutils.protocol;
 import java.lang.reflect.Field;
 import java.util.List;
 
-import net.minecraft.server.v1_12_R1.NetworkManager;
-import net.minecraft.server.v1_12_R1.PlayerConnection;
-import net.minecraft.server.v1_12_R1.ServerConnection;
+import net.minecraft.server.v1_16_R3.NetworkManager;
+import net.minecraft.server.v1_16_R3.PlayerConnection;
+import net.minecraft.server.v1_16_R3.ServerConnection;
 
-import org.bukkit.craftbukkit.v1_12_R1.CraftServer;
+import org.bukkit.craftbukkit.v1_16_R3.CraftServer;
 import org.bukkit.entity.Player;
 
 import io.netty.channel.Channel;
@@ -15,7 +15,7 @@ import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.ChannelPipeline;
 
-class ProtocolInjector1_12_R1 implements IProtocolInjector
+class ProtocolInjector1_16R3 implements IProtocolInjector
 {
     @Override
     public void doInject(final InjectorContext context) throws Exception
@@ -25,7 +25,7 @@ class ProtocolInjector1_12_R1 implements IProtocolInjector
 
         final Class<?> serverConnectionClass = serverConnection.getClass();
 
-        final Field activeListenersField = serverConnectionClass.getDeclaredField("g");
+        final Field activeListenersField = serverConnectionClass.getDeclaredField("listeningChannels");
         activeListenersField.setAccessible(true);
 
         final List<ChannelFuture> activeListeners = (List<ChannelFuture>) activeListenersField.get(serverConnection);
@@ -57,9 +57,9 @@ class ProtocolInjector1_12_R1 implements IProtocolInjector
         final Channel channel = (Channel) channelObj;
 
         final NetworkManager networkManager = (NetworkManager) channel.pipeline().get("packet_handler");
-        if (networkManager.i() instanceof PlayerConnection)
+        if (networkManager.j() instanceof PlayerConnection)
         {
-            final PlayerConnection playerConnection = (PlayerConnection) networkManager.i();
+            final PlayerConnection playerConnection = (PlayerConnection) networkManager.j();
             return playerConnection.player.getBukkitEntity();
         }
 

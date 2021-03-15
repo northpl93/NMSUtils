@@ -3,17 +3,17 @@ package pl.north93.nmsutils;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 import pl.north93.nmsutils.protocol.IProtocolManager;
-import pl.north93.nmsutils.protocol.ProtocolManagerImpl;
+import pl.north93.nmsutils.protocol.ProtocolManagerFactory;
 import pl.north93.nmsutils.tracker.EntityTrackerManager;
 import pl.north93.nmsutils.tracker.EntityTrackerManagerFactory;
 
 public class NMSUtilsPlugin extends JavaPlugin implements NMSUtils
 {
     private static final String SERVER_VERSION;
-    private ProtocolManagerImpl protocolManager;
+    private IProtocolManager protocolManager;
 
     static
     {
@@ -36,7 +36,7 @@ public class NMSUtilsPlugin extends JavaPlugin implements NMSUtils
     @Override
     public void onEnable()
     {
-        this.protocolManager = new ProtocolManagerImpl();
+        this.protocolManager = ProtocolManagerFactory.createProtocolManager(SERVER_VERSION);
 
         final EntityTrackerManager entityTrackerManager = EntityTrackerManagerFactory.createEntityTrackerManager(SERVER_VERSION);
         this.getServer().getPluginManager().registerEvents(entityTrackerManager, this);

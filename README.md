@@ -4,9 +4,16 @@ Various useful utilities in the development of advanced plugins.
 
 Features
 --------
-* Simple packet listener (register your `IPacketHandler`s in `IProtocolManager`)
+* Simple packet listener
 * ChannelInitializeEvent - called when Minecraft is initialising channel's pipeline, so you can add your own stuff
 * EntityTrackedPlayerEvent & EntityUnTrackedPlayerEvent - called when entity enters player's visible range
+
+Supported versions
+------------------
+* 1.12.2
+* 1.16.5
+
+_Only Paper is supported_
 
 How to use
 ----------

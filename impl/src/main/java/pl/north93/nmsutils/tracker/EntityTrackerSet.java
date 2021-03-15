@@ -65,8 +65,13 @@ class EntityTrackerSet<PLAYER> implements Set<PLAYER>
     @Override
     public boolean remove(final Object o)
     {
-        this.listener.entityUnTrackedByPlayer((PLAYER) o);
-        return this.wrappedSet.remove(o);
+        if (this.wrappedSet.remove(o))
+        {
+            this.listener.entityUnTrackedByPlayer((PLAYER) o);
+            return true;
+        }
+
+        return false;
     }
 
     @Override

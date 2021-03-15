@@ -9,6 +9,9 @@ subprojects {
     apply plugin: 'io.freefair.lombok'
     apply plugin: 'com.github.johnrengelman.shadow'
 
+    compileJava.sourceCompatibility = JavaVersion.VERSION_11
+    compileJava.targetCompatibility = JavaVersion.VERSION_11
+
     repositories {
         mavenLocal()
 

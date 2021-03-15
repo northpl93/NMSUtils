@@ -3,4 +3,5 @@ rootProject.name = 'NMSUtils'
 include ":api"
 include ":impl"
 include ":v1_12R1"
+include ":v1_16R3"
 include ":plugin"

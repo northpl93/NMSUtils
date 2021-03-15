@@ -2,6 +2,7 @@ dependencies {
     implementation project(':api')
     implementation project(':impl')
     implementation project(':v1_12R1')
+    implementation project(':v1_16R3')
 
     shadow 'com.destroystokyo.paper:paper-api:1.12.2-R0.1-SNAPSHOT'
 }
